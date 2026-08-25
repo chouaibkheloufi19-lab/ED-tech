@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "ED-tech"
+description = "A welcoming Arabic learning companion that helps students follow lessons, manage appointments, track progress, and stay supported by a daily program guide."
+version = "1.0.0"
+id = "artifacts/ed-tech-app"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24633
+
+[services.development]
+run = "pnpm --filter @workspace/ed-tech-app run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/ed-tech-app", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/ed-tech-app/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24633"
+BASE_PATH = "/"

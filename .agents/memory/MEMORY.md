@@ -1,0 +1,1 @@
+- [Preview registration quirk](preview-registration-quirk.md) — an empty session metadata mount can block artifact and workflow registration even when the app builds correctly.
